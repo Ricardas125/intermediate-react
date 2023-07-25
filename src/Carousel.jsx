@@ -19,15 +19,15 @@ class Carousel extends Component {
     const { active } = this.state;
     const { images } = this.props;
     return (
-      <div className="carousel">
-        <img src={images[active]} alt="animal" />
-        <div className="carousel-smaller">
+      <div className="grid grid-cols-1 sm:grid-cols-2">
+        <img src={images[active]} alt="animal" className="mx-auto" />
+        <div className="grid grid-cols-3 gap-4">
           {images.map((photo, index) => (
             // eslint-disable-next-line
             <img
               key={photo}
               src={photo}
-              className={index === active ? "active" : ""}
+              className={index === active ? "opacity-70" : ""}
               alt="animal thumbnail"
               onClick={this.handleIndexClick}
               data-index={index}

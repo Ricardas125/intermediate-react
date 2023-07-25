@@ -17,8 +17,8 @@ const Details = () => {
 
   if (results.isLoading) {
     return (
-      <div className="loading-pane">
-        <h2 className="loader">🌀</h2>
+      <div className="">
+        <h2 className="">🌀</h2>
       </div>
     );
   }
@@ -26,18 +26,23 @@ const Details = () => {
   const pet = results.data.pets[0];
 
   return (
-    <div className="details">
+    <div className="container mx-auto">
       <Carousel images={pet.images} />
-      <div>
-        <h1>{pet.name}</h1>
-        <h2>{`${pet.animal} — ${pet.breed} — ${pet.city}, ${pet.state}`}</h2>
-        <button onClick={() => setShowModal(true)}>Adopt {pet.name}</button>
-        <p>{pet.description}</p>
+      <div className="mx-auto flex w-4/6 flex-col items-center gap-y-5 text-center">
+        <h1 className="text-6xl">{pet.name}</h1>
+        <h2 className="text-2xl">{`${pet.animal} — ${pet.breed} — ${pet.city}, ${pet.state}`}</h2>
+        <button
+          className="rounded border-none bg-orange-500 px-6 py-2 text-white hover:opacity-50"
+          onClick={() => setShowModal(true)}
+        >
+          Adopt {pet.name}
+        </button>
+        <p className="text-xl">{pet.description}</p>
         {showModal ? (
           <Modal>
-            <div>
+            <div className="max-w-lg rounded bg-white p-4 text-center">
               <h1>Would you like to adopt {pet.name}?</h1>
-              <div className="buttons">
+              <div className="flex flex-row justify-center gap-5">
                 <button
                   onClick={() => {
                     setAdoptedPet(pet);
